@@ -1,13 +1,15 @@
 name: Trivy code scan
-on:
-  pull_request:
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/trivy.yml'
-      - '**.md'
-    branches:
-      - main
-    types: [opened, synchronize]
+#on:
+#  pull_request:
+#    paths-ignore:
+#      - '.github/**'
+#      - '!.github/workflows/trivy.yml'
+#      - '**.md'
+#    branches:
+#      - main
+#    types: [opened, synchronize]
+on: workflow_dispatch
+
 jobs:
   build:
     name: Build

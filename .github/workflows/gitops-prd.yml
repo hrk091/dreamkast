@@ -1,13 +1,14 @@
 name: GitOps for production
 
-on:
-  push:
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/gitops-prd.yml'
-      - '**.md'
-    tags:
-      - v*
+#on:
+#  push:
+#    paths-ignore:
+#      - '.github/**'
+#      - '!.github/workflows/gitops-prd.yml'
+#      - '**.md'
+#    tags:
+#      - v*
+on: workflow_dispatch
 
 jobs:
   gitops:

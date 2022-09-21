@@ -1,9 +1,10 @@
 name: remove 'reviewapps' label from PR that no update during 3 days
 
 
-on:
-  schedule:
-    - cron: '0 0 * * *' # 09:00 JST
+#on:
+#  schedule:
+#    - cron: '0 0 * * *' # 09:00 JST
+on: workflow_dispatch
 
 jobs:
   labeling:
