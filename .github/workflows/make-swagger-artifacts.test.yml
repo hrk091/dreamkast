@@ -87,7 +87,6 @@ jobs:
           cp -f ./schemas/swagger.yml ./dreamkast-ui/schemas/swagger.yml
 
       - name: Generate RTKQuery Client
-        uses: docker://node:16.17.1-alpine3.16
         working-directory: /workspace
         run: |
           echo $PWD
