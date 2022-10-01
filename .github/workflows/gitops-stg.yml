@@ -1,13 +1,14 @@
 name: GitOps for staging
 
-on:
-  push:
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/gitops-stg.yml'
-      - '**.md'
-    branches:
-    - main
+on: workflow_dispatch
+#on:
+#  push:
+#    paths-ignore:
+#      - '.github/**'
+#      - '!.github/workflows/gitops-stg.yml'
+#      - '**.md'
+#    branches:
+#    - main
 
 jobs:
   gitops:

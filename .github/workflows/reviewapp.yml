@@ -1,6 +1,7 @@
 name: grant 'reviewapps' label if there are any changes in PR's source code.
 
-on: pull_request
+on: workflow_dispatch
+#on: pull_request
 
 jobs:
   labeling:

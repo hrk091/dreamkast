@@ -1,21 +1,22 @@
 name: CI
 
-on:
-  push:
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/ci.yml'
-      - '**.md'
-    branches:
-    - main
-  pull_request:
-    paths-ignore:
-      - '.github/**'
-      - '!.github/workflows/ci.yml'
-      - '**.md'
-    branches:
-      - main
-    types: [opened, synchronize]
+on: workflow_dispatch
+#on:
+#  push:
+#    paths-ignore:
+#      - '.github/**'
+#      - '!.github/workflows/ci.yml'
+#      - '**.md'
+#    branches:
+#    - main
+#  pull_request:
+#    paths-ignore:
+#      - '.github/**'
+#      - '!.github/workflows/ci.yml'
+#      - '**.md'
+#    branches:
+#      - main
+#    types: [opened, synchronize]
 
 jobs:
   run-test:

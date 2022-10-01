@@ -28,10 +28,11 @@
 
 name: actionlint
 
-on:
-  pull_request:
-    paths:
-      - '.github/workflows/**'
+on: workflow_dispatch
+#on:
+#  pull_request:
+#    paths:
+#      - '.github/workflows/**'
 
 jobs:
   actionlint:

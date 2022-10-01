@@ -1,12 +1,13 @@
 name: Make swagger artifacts
 
-on:
-  push:
-    branches:
-    - main
-    paths:
-    - 'schemas/swagger.yml'
-    - 'schemas/Dockerfile'
+on: workflow_dispatch
+#on:
+#  push:
+#    branches:
+#    - main
+#    paths:
+#    - 'schemas/swagger.yml'
+#    - 'schemas/Dockerfile'
   # pull_request:
   #   branches:
   #     - main
