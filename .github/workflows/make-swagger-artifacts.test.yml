@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3oo
+      - uses: actions/checkout@v3
 
       - name: Build, tag, and push image to Amazon ECR
         id: ecr
