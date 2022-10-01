@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Build, tag, and push image to Amazon ECR
         id: ecr
@@ -41,7 +41,7 @@ jobs:
           echo "::set-output name=IMAGE_WITH_SHA::${IMAGE_WITH_SHA}"
 
       - name: Checkout dreamkast-infra
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: hrk091/dreamkast-infra
           path: dreamkast-infra
@@ -76,15 +76,29 @@ jobs:
           branch: main
 
       - name: Checkout dreamkast-ui
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: hrk091/dreamkast-ui
           path: dreamkast-ui
           token:  ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - name: Generate Swagger Client
+      - name: Copy swagger.yml
+        run: |
+          cp -f ./schemas/swagger.yml ./dreamkast-ui/schemas/swagger.yml
+
+      - name: Generate RTKQuery Client
+        uses: docker://node:16.17.1-alpine3.16
+        working-directory: /workspace
+        run: |
+          echo $PWD
+          echo ${{ github.workspace }}
+          yarn add ts-node @rtk-query/codegen-openapi
+          npx @rtk-query/codegen-openapi ${{ github.workspace }}/dreamkast-ui/rtk-query-codegen-openapi.config.ts
+
+      - name: Generate OpenApi Client
         uses: docker://openapitools/openapi-generator-cli:v5.3.1
         with:
+          # TODO remove --skip-validate-spec flag
           args: generate -g typescript-axios --reserved-words-mappings abstract=abstract -i ./schemas/swagger.yml -o ./dreamkast-ui/src/client-axios --skip-validate-spec
 
       - name: Commit files
